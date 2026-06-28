@@ -1,0 +1,487 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// SQLite does not support enums, use String instead
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String
+  password      String
+  role          String @default("MEMBER")
+  avatarUrl     String?
+  isActive      Boolean  @default(true)
+  isSuperAdmin  Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  sessions             Session[]
+  conversations       Conversation[]  @relation("AssignedConversations")
+  sentMessages        Message[]       @relation("SentMessages")
+  assignedTasks       Task[]
+  workspaceMemberships WorkspaceMember[]
+  aiChats            AiChat[]
+  assignedDeals      Deal[]
+  createdActivities  Activity[]
+  auditLogs          AuditLog[]
+}
+
+model Workspace {
+  id        String        @id @default(cuid())
+  name      String
+  slug      String        @unique
+  logoUrl   String?
+  plan      String @default("FREE")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  members             WorkspaceMember[]
+  integrations        Integration[]
+  contacts            Contact[]
+  conversations       Conversation[]
+  aiAgents            AiAgent[]
+  tasks               Task[]
+  projects            Project[]
+  invoices            Invoice[]
+  aiChats             AiChat[]
+  pipelines           Pipeline[]
+  deals               Deal[]
+  activities          Activity[]
+  knowledgeArticles   KnowledgeArticle[]
+  auditLogs           AuditLog[]
+  subscriptions       WorkspaceSubscription[]
+  paymentMethods       PaymentMethod[]
+  payments            Payment[]
+}
+
+model SubscriptionPlan {
+  id           String   @id @default(cuid())
+  name         String
+  code         String   @unique
+  priceMonthly Float    @default(0)
+  priceYearly  Float    @default(0)
+  features     String
+  limits       String
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  subscriptions WorkspaceSubscription[]
+}
+
+model WorkspaceSubscription {
+  id                   String             @id @default(cuid())
+  status               String @default("TRIALING")
+  currentPeriodStart   DateTime           @default(now())
+  currentPeriodEnd     DateTime
+  trialEndsAt          DateTime?
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  canceledAt           DateTime?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  planId      String
+  plan        SubscriptionPlan  @relation(fields: [planId], references: [id])
+
+  payments Payment[]
+
+  @@index([workspaceId])
+  @@index([stripeCustomerId])
+  @@index([status])
+}
+
+model PaymentMethod {
+  id        String            @id @default(cuid())
+  type      String
+  details   String
+  isDefault Boolean           @default(false)
+  createdAt DateTime          @default(now())
+
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+
+  @@index([workspaceId])
+}
+
+model Payment {
+  id               String        @id @default(cuid())
+  amount           Float
+  currency         String        @default("USD")
+  status           String @default("PENDING")
+  provider         String?
+  providerPaymentId String?
+  createdAt        DateTime      @default(now())
+
+  workspaceId       String
+  workspace         Workspace              @relation(fields: [workspaceId], references: [id])
+  subscriptionId    String
+  subscription      WorkspaceSubscription   @relation(fields: [subscriptionId], references: [id])
+  invoiceId         String?
+  invoice           Invoice?               @relation(fields: [invoiceId], references: [id])
+
+  @@index([workspaceId])
+  @@index([subscriptionId])
+  @@index([status])
+}
+
+model WorkspaceMember {
+  id        String   @id @default(cuid())
+  role      String @default("MEMBER")
+  joinedAt  DateTime @default(now())
+
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+
+  @@unique([userId, workspaceId])
+  @@index([workspaceId])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([token])
+}
+
+model Integration {
+  id           String          @id @default(cuid())
+  type         String
+  name         String
+  credentials  String?
+  isConnected  Boolean         @default(false)
+  lastSyncedAt DateTime?
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  workspaceId   String
+  workspace     Workspace      @relation(fields: [workspaceId], references: [id])
+  conversations Conversation[]
+
+  @@index([workspaceId])
+  @@index([type])
+}
+
+model Contact {
+  id         String        @id @default(cuid())
+  name       String
+  email      String?
+  phone      String?
+  avatarUrl  String?
+  source     String @default("OTHER")
+  metadata   String?
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  workspaceId   String
+  workspace     Workspace      @relation(fields: [workspaceId], references: [id])
+  conversations Conversation[]
+  invoices       Invoice[]
+  deals          Deal[]
+  activities     Activity[]
+
+  @@index([workspaceId])
+  @@index([email])
+  @@index([phone])
+}
+
+model Conversation {
+  id         String             @id @default(cuid())
+  channel    String
+  subject    String?
+  status     String @default("OPEN")
+  lastMessageAt DateTime?
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+
+  workspaceId    String
+  workspace      Workspace     @relation(fields: [workspaceId], references: [id])
+  contactId      String
+  contact        Contact       @relation(fields: [contactId], references: [id])
+  integrationId  String?
+  integration    Integration?  @relation(fields: [integrationId], references: [id])
+  assignedToId   String?
+  assignedTo     User?         @relation("AssignedConversations", fields: [assignedToId], references: [id])
+  messages       Message[]
+
+  @@index([workspaceId])
+  @@index([contactId])
+  @@index([assignedToId])
+  @@index([status])
+}
+
+model Message {
+  id          String             @id @default(cuid())
+  content     String
+  contentType String @default("TEXT")
+  direction   String
+  metadata    String?
+  createdAt   DateTime           @default(now())
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  senderId       String?
+  sender         User?        @relation("SentMessages", fields: [senderId], references: [id])
+
+  @@index([conversationId])
+  @@index([createdAt])
+}
+
+model Pipeline {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  stages      String
+  isDefault   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+
+  deals Deal[]
+
+  @@index([workspaceId])
+}
+
+model Deal {
+  id                String     @id @default(cuid())
+  name              String
+  value             Float      @default(0)
+  currency          String     @default("USD")
+  stageId           String
+  expectedCloseDate DateTime?
+  probability       Int        @default(0)
+  notes             String?
+  status            String @default("OPEN")
+  order             Int        @default(0)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+
+  workspaceId  String
+  workspace    Workspace  @relation(fields: [workspaceId], references: [id])
+  pipelineId   String
+  pipeline     Pipeline   @relation(fields: [pipelineId], references: [id])
+  contactId    String?
+  contact      Contact?   @relation(fields: [contactId], references: [id])
+  assignedToId String?
+  assignedTo   User?      @relation(fields: [assignedToId], references: [id])
+
+  activities Activity[]
+
+  @@index([workspaceId])
+  @@index([pipelineId])
+  @@index([contactId])
+  @@index([assignedToId])
+  @@index([status])
+}
+
+model Activity {
+  id          String       @id @default(cuid())
+  type        String
+  subject     String
+  description String?
+  createdAt   DateTime     @default(now())
+
+  workspaceId  String
+  workspace    Workspace @relation(fields: [workspaceId], references: [id])
+  contactId    String?
+  contact      Contact?  @relation(fields: [contactId], references: [id])
+  dealId       String?
+  deal         Deal?     @relation(fields: [dealId], references: [id])
+  createdById  String
+  createdBy    User      @relation(fields: [createdById], references: [id])
+
+  @@index([workspaceId])
+  @@index([contactId])
+  @@index([dealId])
+}
+
+model AiChatMessage {
+  id        String     @id @default(cuid())
+  role      String
+  content   String
+  metadata  String?
+  createdAt DateTime   @default(now())
+
+  chatId String
+  chat   AiChat @relation(fields: [chatId], references: [id])
+
+  @@index([chatId])
+  @@index([createdAt])
+}
+
+model KnowledgeArticle {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  tags      String
+  embeddings String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+
+  @@index([workspaceId])
+  @@index([title])
+}
+
+model AiAgentExecution {
+  id          String                @id @default(cuid())
+  triggeredBy String
+  input       String
+  output      String?
+  status      String @default("PENDING")
+  startedAt   DateTime?
+  completedAt DateTime?
+
+  agentId String
+  agent   AiAgent @relation(fields: [agentId], references: [id])
+
+  @@index([agentId])
+  @@index([status])
+}
+
+model AiAgent {
+  id           String   @id @default(cuid())
+  name         String
+  description  String?
+  systemPrompt String
+  model        String   @default("gpt-4")
+  temperature  Float    @default(0.7)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  workspaceId String
+  workspace   Workspace       @relation(fields: [workspaceId], references: [id])
+  executions  AiAgentExecution[]
+
+  @@index([workspaceId])
+}
+
+model Task {
+  id          String       @id @default(cuid())
+  title       String
+  description String?
+  status      String @default("TODO")
+  priority    String @default("MEDIUM")
+  dueDate     DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  workspaceId   String
+  workspace     Workspace @relation(fields: [workspaceId], references: [id])
+  assignedToId  String?
+  assignedTo    User?     @relation(fields: [assignedToId], references: [id])
+
+  @@index([workspaceId])
+  @@index([assignedToId])
+  @@index([status])
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  color       String?
+  status      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+
+  @@index([workspaceId])
+}
+
+model Invoice {
+  id         String        @id @default(cuid())
+  number     String        @unique
+  amount     Float
+  currency   String        @default("USD")
+  status     String @default("DRAFT")
+  dueDate    DateTime?
+  paidAt     DateTime?
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  contactId   String?
+  contact     Contact?  @relation(fields: [contactId], references: [id])
+  payments    Payment[]
+
+  @@index([workspaceId])
+  @@index([contactId])
+  @@index([status])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  entity    String
+  entityId  String?
+  metadata  String?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  userId      String?
+  user        User?     @relation(fields: [userId], references: [id])
+  workspaceId String?
+  workspace   Workspace? @relation(fields: [workspaceId], references: [id])
+
+  @@index([userId])
+  @@index([workspaceId])
+  @@index([action])
+  @@index([entity])
+  @@index([createdAt])
+}
+
+model FeatureFlag {
+  id                String   @id @default(cuid())
+  name              String
+  key               String   @unique
+  description       String?
+  enabled           Boolean  @default(false)
+  workspaceTargeting String?   @default("[]")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([key])
+  @@index([enabled])
+}
+
+model AiChat {
+  id           String   @id @default(cuid())
+  title        String
+  systemPrompt String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  workspaceId String
+  workspace   Workspace       @relation(fields: [workspaceId], references: [id])
+  userId      String
+  user        User            @relation(fields: [userId], references: [id])
+  messages    AiChatMessage[]
+
+  @@index([workspaceId])
+}

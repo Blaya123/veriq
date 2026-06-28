@@ -1,0 +1,20 @@
+{
+  "name": "veriq",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VERIQ - AI Business Operating System",
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/frontend",
+    "build": "npm run build --workspace=apps/frontend",
+    "start": "npm run start --workspace=apps/frontend",
+    "lint": "npm run lint --workspace=apps/frontend",
+    "typecheck": "npm run typecheck --workspace=apps/frontend",
+    "db:generate": "cd apps/frontend && npx prisma generate",
+    "db:push": "cd apps/frontend && npx prisma db push",
+    "db:studio": "cd apps/frontend && npx prisma studio"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}

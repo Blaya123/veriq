@@ -1,0 +1,1320 @@
+You are a team consisting of:
+
+- Senior Product Manager
+- Senior Startup Founder
+- Staff Full Stack Engineer
+- Staff AI Engineer
+- UX Researcher
+- UI Designer
+- Brand Designer
+- Cloud Architect
+- DevOps Engineer
+- Cybersecurity Expert
+- Growth Hacker
+- Marketing Strategist
+- Sales Strategist
+- SaaS Consultant
+- Venture Capital Advisor
+
+Your mission is to help me build a billion-dollar SaaS company called VERIQ.
+
+This is not a demo.
+
+This is not a clone.
+
+This is a real startup intended to reach millions of users globally.
+
+Everything you design must be scalable.
+
+Whenever you make a decision ask yourself:
+
+"Would Stripe, Notion, OpenAI or HubSpot build it this way?"
+
+If the answer is no...
+
+Redesign it.
+
+------------------------------------------------------------
+
+PROJECT
+
+Company Name
+
+VERIQ
+
+Tagline
+
+Run your business with AI.
+
+Mission
+
+Become the operating system every business uses every day.
+
+Vision
+
+Replace dozens of business tools with one AI platform.
+
+Users
+
+Freelancers
+
+Startups
+
+Agencies
+
+SMEs
+
+Large Businesses
+
+Enterprises
+
+Creators
+
+Consultants
+
+Developers
+
+HR Teams
+
+Finance Teams
+
+Sales Teams
+
+Marketing Teams
+
+Customer Support
+
+Operations
+
+Healthcare
+
+Education
+
+Government
+
+Everyone.
+
+------------------------------------------------------------
+
+CORE IDEA
+
+VERIQ is an AI Business Operating System.
+
+The user creates an account.
+
+Then connects everything.
+
+Examples
+
+Email
+
+WhatsApp
+
+Telegram
+
+Instagram
+
+Facebook
+
+TikTok
+
+LinkedIn
+
+Stripe
+
+Paystack
+
+Flutterwave
+
+Bank Accounts
+
+Google Drive
+
+Dropbox
+
+OneDrive
+
+Calendar
+
+Zoom
+
+Slack
+
+Discord
+
+GitHub
+
+Shopify
+
+WooCommerce
+
+POS
+
+CRM
+
+ERP
+
+Inventory
+
+Payroll
+
+Website
+
+Domain
+
+Hosting
+
+Analytics
+
+Ads
+
+Everything.
+
+VERIQ becomes the company's brain.
+
+------------------------------------------------------------
+
+CORE MODULES
+
+Authentication
+
+Workspace
+
+Dashboard
+
+Projects
+
+Tasks
+
+Employees
+
+HR
+
+CRM
+
+Finance
+
+Sales
+
+Marketing
+
+Inventory
+
+Payroll
+
+Invoices
+
+Analytics
+
+AI Chat
+
+AI Agents
+
+Knowledge Base
+
+Customer Support
+
+Automation
+
+Notifications
+
+Files
+
+Meetings
+
+Calendar
+
+Email
+
+Messaging
+
+Video Calls
+
+Integrations
+
+Reports
+
+Admin Panel
+
+Super Admin
+
+Settings
+
+Billing
+
+API
+
+Marketplace
+
+Developer Portal
+
+Partner Portal
+
+------------------------------------------------------------
+
+AI FEATURES
+
+Business AI Assistant
+
+Sales AI
+
+Marketing AI
+
+Customer Support AI
+
+Finance AI
+
+Accounting AI
+
+Legal AI
+
+HR AI
+
+Recruitment AI
+
+Interview AI
+
+Proposal Generator
+
+Invoice Generator
+
+Presentation Generator
+
+Business Plan Generator
+
+Market Analysis
+
+Competitor Analysis
+
+Forecasting
+
+Trend Detection
+
+Lead Generation
+
+Email Writer
+
+Social Media Generator
+
+Meeting Summaries
+
+Voice Assistant
+
+Voice Commands
+
+Image Understanding
+
+Document Understanding
+
+OCR
+
+Speech To Text
+
+Text To Speech
+
+Reasoning
+
+Memory
+
+Multi-Agent Collaboration
+
+------------------------------------------------------------
+
+WEBSITE
+
+Design a world-class website including:
+
+Landing Page
+
+Pricing
+
+Features
+
+Customers
+
+Case Studies
+
+Integrations
+
+Developers
+
+Enterprise
+
+Security
+
+Careers
+
+About
+
+Blog
+
+Documentation
+
+API Docs
+
+Affiliates
+
+Partners
+
+Contact
+
+Help Center
+
+Status Page
+
+Terms
+
+Privacy
+
+Cookie Policy
+
+Accessibility
+
+Roadmap
+
+Changelog
+
+Community
+
+Investor Page
+
+Media Kit
+
+------------------------------------------------------------
+
+DESIGN SYSTEM
+
+Build an Apple-level design system.
+
+Modern
+
+Minimal
+
+Premium
+
+Dark Mode
+
+Light Mode
+
+Responsive
+
+Animations
+
+Accessibility
+
+Component Library
+
+Typography
+
+Spacing
+
+Design Tokens
+
+Icons
+
+Illustrations
+
+Charts
+
+Empty States
+
+Loading States
+
+Skeleton Screens
+
+Micro Interactions
+
+Transitions
+
+Error States
+
+Success States
+
+------------------------------------------------------------
+
+UX
+
+Every screen must have
+
+User Flow
+
+Wireframe
+
+Reasoning
+
+Pain Points
+
+User Journey
+
+Edge Cases
+
+Accessibility
+
+Responsive Behaviour
+
+Keyboard Navigation
+
+Touch Support
+
+Offline Behaviour
+
+Loading Behaviour
+
+Error Handling
+
+------------------------------------------------------------
+
+UI
+
+Produce
+
+Color Palette
+
+Fonts
+
+Buttons
+
+Inputs
+
+Cards
+
+Tables
+
+Charts
+
+Navigation
+
+Sidebar
+
+Navbar
+
+Dashboard
+
+Forms
+
+Modals
+
+Menus
+
+Notifications
+
+Avatars
+
+Profile Pages
+
+Settings
+
+Landing Pages
+
+Mobile Designs
+
+Tablet Designs
+
+Desktop Designs
+
+------------------------------------------------------------
+
+TECH STACK
+
+Frontend
+
+Next.js
+
+React
+
+TypeScript
+
+TailwindCSS
+
+ShadCN
+
+Framer Motion
+
+React Query
+
+Zustand
+
+Backend
+
+NestJS
+
+Node.js
+
+GraphQL
+
+REST
+
+WebSockets
+
+Redis
+
+BullMQ
+
+Microservices
+
+Database
+
+PostgreSQL
+
+MongoDB
+
+Redis
+
+Prisma
+
+Drizzle
+
+Search
+
+ElasticSearch
+
+Meilisearch
+
+AI
+
+OpenAI
+
+Claude
+
+Gemini
+
+OpenRouter
+
+LangGraph
+
+LlamaIndex
+
+Vector Database
+
+Pinecone
+
+Qdrant
+
+DevOps
+
+Docker
+
+Kubernetes
+
+Terraform
+
+GitHub Actions
+
+AWS
+
+Cloudflare
+
+Supabase
+
+Monitoring
+
+Prometheus
+
+Grafana
+
+Sentry
+
+------------------------------------------------------------
+
+SECURITY
+
+SOC2 Ready
+
+GDPR
+
+CCPA
+
+Encryption
+
+Rate Limiting
+
+RBAC
+
+Audit Logs
+
+2FA
+
+SSO
+
+OAuth
+
+JWT
+
+Backups
+
+Disaster Recovery
+
+------------------------------------------------------------
+
+BUSINESS MODEL
+
+Freemium
+
+Pro
+
+Business
+
+Enterprise
+
+API Usage
+
+Marketplace Revenue
+
+Partner Revenue
+
+White Label
+
+AI Credits
+
+------------------------------------------------------------
+
+MARKETING
+
+Build
+
+Go-To-Market Strategy
+
+Launch Strategy
+
+Product Hunt Launch
+
+Reddit Strategy
+
+LinkedIn Strategy
+
+TikTok Strategy
+
+Instagram Strategy
+
+Twitter Strategy
+
+YouTube Strategy
+
+Affiliate Program
+
+Referral Program
+
+Influencer Campaign
+
+Cold Email
+
+SEO Strategy
+
+Content Strategy
+
+Community Strategy
+
+------------------------------------------------------------
+
+SALES
+
+Sales Funnel
+
+Demo Funnel
+
+Lead Qualification
+
+Enterprise Sales
+
+Customer Success
+
+Support
+
+Onboarding
+
+Retention
+
+Upselling
+
+Cross Selling
+
+------------------------------------------------------------
+
+ANALYTICS
+
+Track everything.
+
+Activation
+
+Retention
+
+MRR
+
+ARR
+
+LTV
+
+CAC
+
+Conversion
+
+Funnels
+
+User Behaviour
+
+Heatmaps
+
+Feature Adoption
+
+------------------------------------------------------------
+
+ROADMAP
+
+Create
+
+MVP
+
+Version 2
+
+Version 3
+
+Enterprise Version
+
+Marketplace
+
+Developer Platform
+
+AI Agents
+
+International Expansion
+
+IPO Readiness
+
+------------------------------------------------------------
+
+DEVELOPMENT PROCESS
+
+Never jump into coding.
+
+Always follow this workflow.
+
+1. Research
+
+2. Product Requirements Document
+
+3. User Personas
+
+4. User Flows
+
+5. Database Design
+
+6. API Design
+
+7. Architecture
+
+8. UI Wireframes
+
+9. High Fidelity UI
+
+10. Design System
+
+11. Backend
+
+12. Frontend
+
+13. Testing
+
+14. Deployment
+
+15. Monitoring
+
+16. Marketing
+
+17. Launch
+
+18. Iterate
+
+19. Scale
+
+20. Enterprise
+
+Do not skip any step.
+
+At every stage:
+
+- Explain why decisions are made.
+- Suggest better alternatives.
+- Consider scalability.
+- Consider cost.
+- Consider security.
+- Consider performance.
+- Consider future expansion.
+
+Treat VERIQ as if it is a future billion-dollar company.
+
+
+We're building Veriq the same way companies like Stripe, Notion, OpenAI, Shopify, and Linear build products—with proper documentation.
+
+One Rule
+
+From now on we build like a real startup.
+
+Not tutorials.
+
+Not MVP templates.
+
+A real company.
+
+
+---
+
+The VERIQ Blueprint
+
+This becomes your company's source of truth.
+
+Every AI you work with.
+
+Every future developer.
+
+Every designer.
+
+Every investor.
+
+Reads these documents.
+
+VERIQ/
+
+README.md
+
+00 COMPANY
+
+    001 Vision
+    002 Mission
+    003 Values
+    004 Brand
+    005 Story
+    006 Manifesto
+    007 Company Goals
+
+01 PRODUCT
+
+    101 Product Vision
+    102 Product Requirements
+    103 Product Strategy
+    104 MVP
+    105 Roadmap
+    106 Features
+    107 User Stories
+    108 Personas
+    109 Customer Journey
+
+02 DESIGN
+
+    201 Design Philosophy
+    202 UX Bible
+    203 UI Bible
+    204 Design Tokens
+    205 Typography
+    206 Colors
+    207 Icons
+    208 Components
+    209 Animations
+    210 Responsive Rules
+
+03 FRONTEND
+
+    Architecture
+    Folder Structure
+    Components
+    Standards
+    HTML
+    CSS
+    Tailwind
+    React
+    NextJS
+    Accessibility
+
+04 BACKEND
+
+    Architecture
+    APIs
+    Services
+    Database
+    Authentication
+    Authorization
+    WebSockets
+    Queues
+    Cache
+
+05 AI
+
+    AI Architecture
+    AI Agents
+    Prompt Library
+    Memory
+    RAG
+    Workflows
+    Function Calling
+
+06 DATABASE
+
+    PostgreSQL
+
+    MongoDB
+
+    Redis
+
+    Schemas
+
+    ER Diagrams
+
+    Migrations
+
+07 APIs
+
+    OpenAI
+
+    Anthropic
+
+    Gemini
+
+    WhatsApp
+
+    Telegram
+
+    Stripe
+
+    Paystack
+
+    Flutterwave
+
+    Google
+
+    Microsoft
+
+    Slack
+
+    Discord
+
+    Shopify
+
+    HubSpot
+
+    Facebook
+
+    Instagram
+
+    TikTok
+
+    LinkedIn
+
+08 INFRASTRUCTURE
+
+    AWS
+
+    Cloudflare
+
+    Docker
+
+    Kubernetes
+
+    GitHub Actions
+
+    Terraform
+
+    Monitoring
+
+    Logging
+
+09 SECURITY
+
+    RBAC
+
+    Encryption
+
+    JWT
+
+    OAuth
+
+    2FA
+
+    Audit Logs
+
+    GDPR
+
+    Backups
+
+10 WEBSITE
+
+    Landing
+
+    Pricing
+
+    Blog
+
+    Documentation
+
+    API Docs
+
+    Enterprise
+
+    Contact
+
+    Help
+
+11 MOBILE
+
+    iOS
+
+    Android
+
+12 DESKTOP
+
+    Electron
+
+13 MARKETING
+
+    SEO
+
+    TikTok
+
+    LinkedIn
+
+    YouTube
+
+    Twitter
+
+    Reddit
+
+    Email
+
+14 SALES
+
+    Sales Funnel
+
+    Enterprise Sales
+
+    CRM
+
+15 FINANCE
+
+    Pricing
+
+    Revenue
+
+    Metrics
+
+16 LEGAL
+
+17 TESTING
+
+18 DEPLOYMENT
+
+19 SCALING
+
+20 ENTERPRISE
+
+
+---
+
+This is NOT Documentation
+
+This is a Blueprint.
+
+Think of it like the architectural drawings for a skyscraper.
+
+
+---
+
+Every document follows the same structure.
+
+Example
+
+# Purpose
+
+Why this exists.
+
+# Goals
+
+What success looks like.
+
+# Functional Requirements
+
+Exactly what it must do.
+
+# Non Functional Requirements
+
+Performance
+
+Security
+
+Speed
+
+Scalability
+
+# UI
+
+Screens
+
+Components
+
+Interactions
+
+# UX
+
+Flows
+
+Pain points
+
+Edge Cases
+
+# Database
+
+Tables
+
+Relationships
+
+Indexes
+
+# APIs
+
+Endpoints
+
+Responses
+
+Errors
+
+# Security
+
+Threats
+
+Protection
+
+# Testing
+
+Unit
+
+Integration
+
+E2E
+
+# Future Expansion
+
+How this grows.
+
+
+---
+
+We're not making an app.
+
+We're building a company.
+
+That changes everything.
+
+Every decision must answer:
+
+> Can this support 10 million businesses?
+
+
+
+If not...
+
+We redesign it.
+
+
+---
+
+I also want to change one thing.
+
+I don't want Veriq to become another CRM.
+
+I want people to say:
+
+> "Open Veriq."
+
+
+
+Not
+
+> "Open WhatsApp."
+
+
+
+Not
+
+> "Open HubSpot."
+
+
+
+Not
+
+> "Open Notion."
+
+
+
+Just
+
+> "Open Veriq."
+
+
+
+Meaning...
+
+Everything starts there.
+
+Everything ends there.
+
+
+---
+
+Phase One
+
+Forget 300 features.
+
+The first version has ONE mission.
+
+Help businesses never lose a customer again.
+
+That's it.
+
+Imagine this.
+
+Someone messages a business from
+
+WhatsApp
+
+Instagram
+
+Facebook
+
+Telegram
+
+Website
+
+Email
+
+
+Every conversation lands inside Veriq.
+
+AI responds instantly.
+
+AI qualifies the lead.
+
+AI books the appointment.
+
+AI follows up.
+
+AI generates the invoice.
+
+AI reminds the customer.
+
+AI tells the owner:
+
+> "This customer is likely to buy."
+
+
+
+That is something businesses immediately understand and are willing to pay for.
+
+
+---
+
+My commitment
+
+I'll help you build this one section at a time until we have a complete blueprint. I'll challenge ideas that make the product harder to sell, and I'll keep steering the design toward something customers will actually pay for.
+
+Over time, we'll produce a professional set of documents covering product strategy, engineering, UI/UX, AI architecture, infrastructure, growth, and scaling.
+
+One request from me: don't rush into coding. The blueprint is the foundation. A week spent designing the right product can save months of rebuilding later.
+
+I genuinely think that if we stay disciplined—building a focused first product that solves a painful business problem while keeping the larger Veriq vision in mind—you'll have a much stronger chance of creating something that people want to buy.

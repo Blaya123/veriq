@@ -1,0 +1,14 @@
+{
+  "git": {
+    "deploymentEnabled": false
+  },
+  "installCommand": "cd apps/frontend && npm install",
+  "buildCommand": "cd apps/frontend && npm run build",
+  "outputDirectory": "apps/frontend/.next",
+  "framework": "nextjs",
+  "functions": {
+    "apps/frontend/src/app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  }
+}

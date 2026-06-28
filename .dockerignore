@@ -1,0 +1,13 @@
+node_modules
+.git
+.next
+dist
+.env
+*.log
+.gitkeep
+.DS_Store
+*.md
+coverage
+.nyc_output
+.turbo
+.cache
