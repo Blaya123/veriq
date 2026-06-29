@@ -412,9 +412,21 @@ async function handleRequest(req: NextRequest, segments: string[]): Promise<Next
 
     if (method === "POST") {
       const body = await getBody(req);
+      const pipelines = await prisma.pipeline.findMany({ where: { workspaceId: wsId } });
+      const pipeline = pipelines[0] || await prisma.pipeline.create({ data: { name: "Default Pipeline", workspaceId: wsId } });
+      const stages = await prisma.stage.findMany({ where: { pipelineId: pipeline.id } });
+      const stage = stages[0] || await prisma.stage.create({ data: { name: "New", pipelineId: pipeline.id, order: 0 } });
       const maxOrder = await prisma.deal.aggregate({ where: { workspaceId: wsId }, _max: { order: true } });
       const deal = await prisma.deal.create({
-        data: { ...body, workspaceId: wsId, order: (maxOrder._max.order || 0) + 1 },
+        data: {
+          name: body.title || body.name || "Untitled Deal",
+          title: body.title || body.name || "Untitled Deal",
+          value: body.value || 0,
+          stageId: stage.id,
+          pipelineId: pipeline.id,
+          workspaceId: wsId,
+          order: (maxOrder._max.order || 0) + 1,
+        },
       });
       trackEvent(payload.sub, "deal_created", { deal_id: deal.id, pipeline_id: deal.pipelineId, value: deal.value });
       return json(deal, 201);
@@ -456,7 +468,12 @@ async function handleRequest(req: NextRequest, segments: string[]): Promise<Next
     if (method === "POST") {
       const body = await getBody(req);
       const article = await prisma.knowledgeArticle.create({
-        data: { ...body, workspaceId: wsId },
+        data: {
+          title: body.title || "Untitled",
+          content: body.content || "",
+          tags: body.tags || "",
+          workspaceId: wsId,
+        },
       });
       return json(article, 201);
     }
