@@ -412,10 +412,14 @@ async function handleRequest(req: NextRequest, segments: string[]): Promise<Next
 
     if (method === "POST") {
       const body = await getBody(req);
-      const pipelines = await prisma.pipeline.findMany({ where: { workspaceId: wsId } });
-      const pipeline = pipelines[0] || await prisma.pipeline.create({ data: { name: "Default Pipeline", workspaceId: wsId } });
-      const stages = await prisma.stage.findMany({ where: { pipelineId: pipeline.id } });
-      const stage = stages[0] || await prisma.stage.create({ data: { name: "New", pipelineId: pipeline.id, order: 0 } });
+      let pipeline = (await prisma.pipeline.findFirst({ where: { workspaceId: wsId }, include: { stages: true } }));
+      if (!pipeline) {
+        pipeline = await prisma.pipeline.create({
+          data: { name: "Default Pipeline", workspaceId: wsId, stages: { create: { name: "New", order: 0 } } },
+          include: { stages: true },
+        });
+      }
+      const stage = pipeline.stages[0];
       const maxOrder = await prisma.deal.aggregate({ where: { workspaceId: wsId }, _max: { order: true } });
       const deal = await prisma.deal.create({
         data: {
